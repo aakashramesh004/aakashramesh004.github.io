@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash R | Data Science & AI Portfolio</title>
+    <title>Aakash R | Data Science Student</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION BAR (NEW) --- */
+        /* --- NAVIGATION BAR --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -38,14 +38,14 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            background: rgba(5, 5, 17, 0.85); /* Semi-transparent dark */
-            backdrop-filter: blur(10px); /* Blur effect */
+            background: rgba(5, 5, 17, 0.85);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 50px; /* Space between links */
+            gap: 50px;
             list-style: none;
         }
 
@@ -65,7 +65,7 @@
 
         /* --- LAYOUT UTILITIES --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 100px 0; position: relative; } /* Increased padding for navbar space */
+        section { padding: 100px 0; position: relative; } 
         
         h2 {
             font-size: 2.5rem;
@@ -99,7 +99,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding-top: 60px; /* Offset for navbar */
+            padding-top: 60px;
         }
 
         .profile-img-container {
@@ -341,18 +341,28 @@
         <div class="container">
             <h2 data-aos="fade-up">Featured Projects</h2>
             <div class="project-grid">
+                
                 <div class="glass-card project-card" data-tilt data-aos="fade-up">
                     <div class="project-icon"><i class="fas fa-car-side"></i></div>
                     <h3>Car Recommendation System (RL)</h3>
                     <p>An intelligent engine using Reinforcement Learning to personalize car suggestions. Features a custom Reward Function and State-Action pairs to optimize user preference prediction.</p>
                     <div class="tech-stack-mini">Python • OpenAI Gym • NumPy • Pandas</div>
                 </div>
+                
                 <div class="glass-card project-card" data-tilt data-aos="fade-up" data-aos-delay="100">
                     <div class="project-icon"><i class="fas fa-industry"></i></div>
                     <h3>Dairy Procurement Management</h3>
                     <p>A comprehensive system designed to streamline and manage dairy procurement processes, ensuring data integrity and operational efficiency.</p>
                     <div class="tech-stack-mini">Data Analysis • Management Systems</div>
                 </div>
+
+                <div class="glass-card project-card" data-tilt data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-icon"><i class="fas fa-bus"></i></div>
+                    <h3>Where Is My Bus</h3>
+                    <p>A real-time bus tracking application designed to help commuters track live locations and estimate arrival times for efficient travel planning.</p>
+                    <div class="tech-stack-mini">IoT • GPS • Real-Time Tracking</div>
+                </div>
+
             </div>
         </div>
     </section>
