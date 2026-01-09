@@ -13,7 +13,7 @@
             --primary: #00f2ff;
             --secondary: #00c3ff;
             --accent: #7000ff;
-            --bg-dark: #050511;
+            --bg-dark: #050511; /* Solid Dark Background Color */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-light: #e2e8f0;
@@ -23,20 +23,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
         
         body {
-            background-color: var(--bg-dark);
+            /* PLAIN BACKGROUND HERE */
+            background-color: var(--bg-dark); 
             color: var(--text-light);
             overflow-x: hidden;
-        }
-
-        /* --- NEURAL NETWORK BACKGROUND --- */
-        #canvas-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #0a0a2a 0%, #000000 100%);
         }
 
         /* --- LAYOUT UTILITIES --- */
@@ -189,8 +179,6 @@
 </head>
 <body>
 
-    <canvas id="canvas-bg"></canvas>
-
     <header>
         <div class="container" data-aos="zoom-in" data-aos-duration="1000">
             <div class="profile-img-container">
@@ -200,7 +188,15 @@
                 <h1>Hello, I'm <span>Aakash</span></h1>
                 <span class="typewriter" id="typing-text"></span>
                 <p style="margin-bottom: 30px; color: var(--text-gray);">Amrita Vishwa Vidyapeetham | Integrated MSc Data Science</p>
-                <a href="#contact" class="btn-glow">Connect With Me</a>
+                
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="#contact" class="btn-glow">Connect With Me</a>
+                    
+                    <a href="resume.pdf" download="Aakash_Resume.pdf" class="btn-glow" style="background: transparent; border: 2px solid var(--primary); color: var(--primary); box-shadow: none;">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+
             </div>
         </div>
     </header>
@@ -341,7 +337,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
-                    <a href="http://www.linkedin.com/in/aakash r-965b1a319">LinkedIn Profile</a>
+                    <a href="https://www.linkedin.com/in/aakash-r-965b1a319/">LinkedIn Profile</a>
                 </div>
             </div>
             <p style="text-align: center; margin-top: 50px; color: var(--text-gray); font-size: 0.8rem;">
@@ -376,89 +372,6 @@
             glare: true,
             "max-glare": 0.1,
         });
-
-        // 4. Neural Network Canvas Animation
-        const canvas = document.getElementById('canvas-bg');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = '#00f2ff';
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 0.5) - 0.25;
-                let directionY = (Math.random() * 0.5) - 0.25;
-                let color = '#00f2ff';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = 'rgba(0, 242, 255,' + opacityValue + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            init();
-        });
-
-        init();
-        animate();
     </script>
 </body>
 </html>
